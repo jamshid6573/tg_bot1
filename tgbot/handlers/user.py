@@ -95,7 +95,13 @@ async def som_stop_uz(message: types.Message, state: FSMContext):
 # FSM SOM UZ
 
 
+#Akkaunt UZ
+async def account_uz(message: types.Message):
+    await message.answer("Sotmoqchimisiz yoki sotib olmoqchimisiz?", reply_markup=btn_acc_uz)
 
+async def acoount_sell(message: types.Message):
+    await message.answer()
+#Akkaunt UZ
 
 #Рус язык
 async def rus(call: types.CallbackQuery):
@@ -116,3 +122,4 @@ def register_user(dp: Dispatcher):
     dp.register_message_handler(gold_stop_uz, state=FSMuz.gold)
     dp.register_message_handler(som_start_uz, text='X som💸 ga - nechi gold boladi?')
     dp.register_message_handler(som_stop_uz, state=FSMsom.som)
+    dp.register_message_handler(account_uz, text='Akkauntlar🔥')

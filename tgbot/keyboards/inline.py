@@ -31,6 +31,13 @@ btn_all_uz.add(btn_price_uz).add(btn_gold_uz).add(btn_som_uz).add(btn_menu_uz)
 #Узбекское Gold
 
 
+#Узбекское Аккаунт
+btn1 = KeyboardButton("Sotmoqchiman📉")
+btn2 = KeyboardButton("Sotib olmoqchiman📈")
+btn_acc_uz = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).row(btn1, btn2).add(btn_menu_uz)
+#Узбекское Аккаунт
+
+
 ################################################
 
 #Русское Основное
