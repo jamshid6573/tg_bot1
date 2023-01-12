@@ -10,22 +10,24 @@ bot = Bot(token='908579189:AAGf6CGZa_Vx_ohvDLPa_WXci10s3uksi0M', parse_mode='HTM
 
 async def user_start(message: types.Message):
     global start_
-    start_ = await message.reply("Bot ga hush kelibsiz, tilni tanlang. \n \nДобро пожалововать в бот, выберите язык.", reply_markup=Inline_lang)
+    start_ = await message.reply(f'👋🏻Salom {message.from_user.first_name}, bot ga hush kelibsiz, tilni tanlang. \n \n👋🏻Привет {message.from_user.first_name}, добро пожалововать в бот, выберите язык.', reply_markup=Inline_lang)
 
 
 #Узб язык
 async def uzb(call: types.CallbackQuery):
     await bot.answer_callback_query(call.id)
-    await start_.delete()    
-    await bot.send_message(call.from_user.id, "Uzbek tili tanlandi!", reply_markup=buttons)
-
+    if start_:
+        await start_.delete()    
+        await bot.send_message(call.from_user.id, "Uzbek tili tanlandi!", reply_markup=buttons)
+    else:
+        await bot.send_message(call.from_user.id, "Uzbek tili tanlandi!", reply_markup=buttons)
 
 async def gold_uz(message: types.Message):
     await message.answer("Operatsiyani tanlang:", reply_markup = btn_all_uz)
 
 #GOLD PASS
 async def goldpass(message: types.Message):
-    await message.answer('Gold pass')
+    await message.answer('Hali tayyor mas!')
 #GOLD PASS
 
 async def gold_buy_sell(message: types.Message):
@@ -35,11 +37,11 @@ async def menu_uz(message: types.Message):
     await message.answer('Bosh sahifaga qaytdingiz✔️', reply_markup=buttons)
 
 async def price_uz(message: types.Message):
-    await message.answer("Prays", reply_markup = btn_all_uz)
+    await message.answer("📉1G dan 999G gacha - 1G=170 som \n\n📉1000G dan 2999G gacha - 1G=166 som \n\n📉3000G dan ∞ gacha - 1G=130 som", reply_markup = btn_all_uz)
 
 #GOLD SOTISH
 async def gold_sell(message: types.Message):
-    await message.answer('Hali tayyormas')
+    await message.answer('Goldingizni sotmoqchimisiz?🤔 \n \n@jamshid_5878 - bilan boglaning, yaxshi narhda sotib olamiz😉')
 #GOLD SOTISH
 
 # FSM GOLD UZ
@@ -57,7 +59,8 @@ async def gold_stop_uz(message: types.Message, state: FSMContext):
             commission = info['commission']
             main_som = sum_correct(price)
             await message.answer(f'{gold} Gold🍯 - {main_som} som boladi.\n \n ❗️Sotib olish uchun 7000ta zaprosdan kop bolmagan skinni {commission} ga qoyib @jamshid_5878 ga skrinwot jonating😊', reply_markup=Inline_link)
-            # await bot.send_message(-1001666478836, f'Zakaz:  @{message.from_user.username} - {gold} Gold \nNarhi: {price} ')
+            await message.answer("💳Uzcard:\n8600 5704 2845 4275\nIgamberdiev Ibrohim", reply_markup=buttons)
+            await bot.send_message(-1001666478836, f'Klient:  @{message.from_user.username}\nGold: {gold}  \nNarhi: {sum_correct(price)} som \nKomissiya: {commission} ')
             await state.finish()
         elif gold < 99:
             await message.answer('Minimum 100 GOLD❗️', reply_markup=button_back)
@@ -86,6 +89,7 @@ async def som_stop_uz(message: types.Message, state: FSMContext):
             commission = info['commission']
             main_som = sum_correct(som)
             await message.answer(f'{main_som} som ga {gold} Gold🍯 boladi. \n \n ❗️Sotib olish uchun 7000ta zaprosdan kop bolmagan skinni {commission} ga qoyib @jamshid_5878 ga skrinwot jonating😊', reply_markup=Inline_link)
+            await message.answer("💳Uzcard:\n8600 5704 2845 4275\nIgamberdiev Ibrohim", reply_markup=buttons)
             await state.finish()
     elif message.text == "Bekor qilish❌":
         await message.answer('Bekor qilindi✔️', reply_markup=buttons)
@@ -99,19 +103,63 @@ async def som_stop_uz(message: types.Message, state: FSMContext):
 async def account_uz(message: types.Message):
     await message.answer("Sotmoqchimisiz yoki sotib olmoqchimisiz?", reply_markup=btn_acc_uz)
 
-async def acoount_sell(message: types.Message):
-    await message.answer()
+async def account_sell(message: types.Message):
+    await message.answer("Akkaunt sotish togrisidagi eloningiz:\n @standoff2akkauntbozor kanaliga joylashtiliradi! \n \nElon joylashtirish narhi 10.000 som.", reply_markup=btn_boshiga)
+    await message.answer("https://t.me/standoff2akkauntbozor")
+    await message.answer("Davom etamizmi?", reply_markup=btn_ha)
+
+async def account_sell2(call: types.CallbackQuery):
+    await bot.answer_callback_query(call.id)
+    await bot.send_message(call.from_user.id, """❗️Diqqat akkaunt sotiladi:
+
+📊Level: 
+🏅Medal:
+🔫Avtomat skinlar: 
+🔪Pichoq:
+🔥Gold:
+📋Qoshimcha malumot:
+💰Narxi: 
+📌Qolgan malumotlar skriwnotlarda!
+
+👤Akkaunt egasi: 
+
+➖➖➖➖➖➖➖➖➖➖➖➖
+
+‼️Mowenniklar dan extiyot boling - Adminsiz savdo qila kormang, adminsiz qilingan savdoga admin javobgar bolmaydi‼️
+
+➖➖➖➖➖➖➖➖➖➖➖➖
+
+➡️Kanal: @standoff2akkauntbozor
+☑️Asosiy kanal: @standoff2shopuzb
+👤Admin: @jamshid_5878✅
+🤖Bot: @Standoff2Uzb_Shop_bot""")
+
+    await bot.send_message(call.from_user.id, "⬆️Tepadagi anketani toldirib, skrinwotlari bilan - @jamshid_5878 ga jonating.", reply_markup=btn_send)
+
+async def account_buy(message: types.Message):
+    await message.answer('https://t.me/standoff2akkauntbozor', reply_markup=btn_boshiga)
+    await message.answer('@standoff2akkauntbozor kanalida ozingizga kerakli akkauntni topishingiz mumkin😊 \n \n‼️Mowenniklar dan extiyot boling - Adminsiz aslo savdo qila kormang, adminsiz qilingan savdoga admin javobgar bolmaydi‼️', reply_markup=btn_kirish)
+
 #Akkaunt UZ
+
+#OTZV
+async def otzv(message: types.Message):
+    await message.answer("Marhamat😊 \nTanishib chiqishingiz mumkin!", reply_markup=buttons_otzv)
+#OTZV
+
+async def gr(message: types.Message):
+    await message.reply("Gruppada reklama va sokinish taqiqlanadi!🚫 \n Ozingizni yaxshi tuting!", reply_markup=button_gr)
 
 #Рус язык
 async def rus(call: types.CallbackQuery):
     await bot.answer_callback_query(call.id)
     await start_.delete()    
-    await bot.send_message(call.from_user.id, "Выбран русский язык!", reply_markup=buttons_rus)
+    await bot.send_message(call.from_user.id, "‼️Извините, в настоящее время Русский язык находится в разработке. Выберите другой язык!\n\nКликните -> /start")
 
 def register_user(dp: Dispatcher):
     dp.register_message_handler(user_start, commands=["start"], state="*")
     dp.register_callback_query_handler(uzb, text="uz")
+    dp.register_callback_query_handler(rus, text="ru")
     dp.register_message_handler(gold_buy_sell, text="Gold🍯")
     dp.register_message_handler(goldpass, text="Gold Pass🎖")
     dp.register_message_handler(gold_uz, text="Sotib olish📈")
@@ -123,3 +171,8 @@ def register_user(dp: Dispatcher):
     dp.register_message_handler(som_start_uz, text='X som💸 ga - nechi gold boladi?')
     dp.register_message_handler(som_stop_uz, state=FSMsom.som)
     dp.register_message_handler(account_uz, text='Akkauntlar🔥')
+    dp.register_message_handler(account_sell, text="Sotmoqchiman📉")
+    dp.register_callback_query_handler(account_sell2, text='ha')
+    dp.register_message_handler(account_buy, text="Sotib olmoqchiman📈")
+    dp.register_message_handler(gr, text='Gruppamiz💬')
+    dp.register_message_handler(otzv, text="Otzivlar📊")

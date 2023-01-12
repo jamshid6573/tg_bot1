@@ -3,6 +3,7 @@ from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButt
 #Меню
 btn_menu_uz = KeyboardButton("Boshiga🏠")
 btn_menu_ru = KeyboardButton("Главное меню🏠")
+btn_boshiga = ReplyKeyboardMarkup(resize_keyboard=True).add(btn_menu_uz)
 #Меню
 
 #Узбекское Основное
@@ -11,7 +12,7 @@ button_1 = KeyboardButton("Gold🍯")
 button_2 = KeyboardButton('Akkauntlar🔥')
 button_3 = KeyboardButton('Gruppamiz💬')
 button_4 = KeyboardButton('Otzivlar📊')
-buttons = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+buttons = ReplyKeyboardMarkup(resize_keyboard=True)
 buttons.row(button_1, button_0).row(button_2, button_3).add(button_4)
 #Узбекское Основное
 
@@ -35,6 +36,9 @@ btn_all_uz.add(btn_price_uz).add(btn_gold_uz).add(btn_som_uz).add(btn_menu_uz)
 btn1 = KeyboardButton("Sotmoqchiman📉")
 btn2 = KeyboardButton("Sotib olmoqchiman📈")
 btn_acc_uz = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).row(btn1, btn2).add(btn_menu_uz)
+
+btn3 = InlineKeyboardButton('HA✔️', callback_data="ha")
+btn_ha = InlineKeyboardMarkup().add(btn3)
 #Узбекское Аккаунт
 
 
@@ -73,19 +77,25 @@ gr_button_RU = InlineKeyboardButton(text = 'Вступить в групу', url
 button_gr_RU = InlineKeyboardMarkup().add(gr_button_RU)
 
 
-but_1 = InlineKeyboardButton(text="1500+ Otziv", url='https://t.me/standoff2shopuzb')
-but_2 = InlineKeyboardButton(text="200+ Otziv", url='https://t.me/standoff2shopuzbotzv')
-buttons_otzv = InlineKeyboardMarkup().add(but_1).add(but_2)
+but_1 = InlineKeyboardButton(text="2000+ Otziv", url='https://t.me/standoff2shopuzb')
+but_2 = InlineKeyboardButton(text="300+ Otziv", url='https://t.me/standoff2shopuzbotzv')
+buttons_otzv = InlineKeyboardMarkup().row(but_1, but_2)
 
 
 but_3 = InlineKeyboardButton(text="1500+ Отзывов", url='https://t.me/standoff2shopuzb')
 but_4 = InlineKeyboardButton(text="200+ Отзывов", url='https://t.me/standoff2shopuzbotzv')
 buttons_otzv_RU = InlineKeyboardMarkup().add(but_3).add(but_4)
 
+btn_4 = InlineKeyboardButton(text='Jonatish📥', url='https://t.me/jamshid_5878')
+btn_send = InlineKeyboardMarkup().add(btn_4)
+
+btn_5 = InlineKeyboardButton(text='Kanalga kirish⬅️', url='https://t.me/standoff2akkauntbozor')
+btn_kirish = InlineKeyboardMarkup().add(btn_5)
+
 
 #Назад
 button_6 = KeyboardButton("Bekor qilish❌")
-button_back = ReplyKeyboardMarkup(resize_keyboard=True).add(button_6)
+button_back = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button_6)
 
 button_7 = KeyboardButton("Отмена❌")
-button_back_RU = ReplyKeyboardMarkup(resize_keyboard=True).add(button_7)
+button_back_RU = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button_7)
