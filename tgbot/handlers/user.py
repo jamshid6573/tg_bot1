@@ -6,7 +6,7 @@ from tgbot.misc.states import FSMrus, FSMuz, FSMsom, FSMsomRU
 from aiogram.dispatcher import FSMContext
 from functions.func import get_info_sum, get_info, sum_correct
 
-bot = Bot(token='908579189:AAGf6CGZa_Vx_ohvDLPa_WXci10s3uksi0M', parse_mode='HTML')
+bot = Bot(token='5226272322:AAEZsPMW68-W9Hx7UkmtfkA-qUI1A9NTrQw', parse_mode='HTML')
 
 async def user_start(message: types.Message):
     global start_
@@ -90,6 +90,7 @@ async def som_stop_uz(message: types.Message, state: FSMContext):
             main_som = sum_correct(som)
             await message.answer(f'{main_som} som ga {gold} Gold🍯 boladi. \n \n ❗️Sotib olish uchun 7000ta zaprosdan kop bolmagan skinni {commission} ga qoyib @jamshid_5878 ga skrinwot jonating😊', reply_markup=Inline_link)
             await message.answer("💳Uzcard:\n8600 5704 2845 4275\nIgamberdiev Ibrohim", reply_markup=buttons)
+            await bot.send_message(-1001666478836, f'Klient:  @{message.from_user.username}\nGold: {gold}  \nNarhi: {sum_correct(som)} som \nKomissiya: {commission} ')
             await state.finish()
     elif message.text == "Bekor qilish❌":
         await message.answer('Bekor qilindi✔️', reply_markup=buttons)
