@@ -33,6 +33,7 @@ async def main():
     # config = load_config(".env")
 
     storage = MemoryStorage()
+    #5226272322:AAEZsPMW68-W9Hx7UkmtfkA-qUI1A9NTrQw
     bot = Bot(token='5226272322:AAEZsPMW68-W9Hx7UkmtfkA-qUI1A9NTrQw', parse_mode='HTML')
     dp = Dispatcher(bot, storage=storage)
 
