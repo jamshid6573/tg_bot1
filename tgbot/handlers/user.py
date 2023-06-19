@@ -28,17 +28,19 @@ async def gold_uz(message: types.Message):
 
 #GOLD PASS
 async def goldpass(message: types.Message):
-    await message.answer(f'''
-        Season 5 Gold Pass
+    foto = open("media/space.jpg", 'rb')
+    await bot.send_photo(message.from_user.id, foto, caption = f'''
+        SPACE VISION
 
 Gold Pass - 119.000 som
+Gold Pass(+10) - 189.000 som
 
 +1 - 15.000 som
-+10 - 45.000 som
-+25 - 259.000 som
-+75 - 629.000 som
++10 - 119.000 som
++20 - 209.000 som
++30 - 279.000 som
 
-Sizgan faqatkina ID va NIK kerak boladi🤝
+Sizdan faqatkina ID va NIK kerak boladi🤝
 
 ❗️Sotib olish uchun @jamshid_5878 ga Tolov cheki bilan ID va NIK tashlaysiz.
     ''', reply_markup=Inline_link)
@@ -314,15 +316,17 @@ async def account_buy_ru(message: types.Message):
 
 #GOLD PASS
 async def goldpass_ru(message: types.Message):
-    await message.answer(f'''
-        Season 5 Gold Pass
+    foto = open("media/space.jpg", 'rb')
+    await bot.send_photo(message.from_user.id, foto, caption = f'''
+        SPACE VISION
 
 Gold Pass - 119.000 сум
+Gold Pass(+10) - 189.000 сум
 
 +1 - 15.000 сум
-+10 - 45.000 сум
-+25 - 259.000 сум
-+75 - 629.000 сум
++10 - 119.000 сум
++20 - 209.000 сум
++30 - 279.000 сум
 
 От вас требуется только Айди и Ник🤝
 
